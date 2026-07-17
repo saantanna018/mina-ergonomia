@@ -13,7 +13,7 @@ const dateStr = pubDate.toLocaleDateString("es-ES", { day: "numeric", month: "lo
 ---
 
 <a
-  href={`/articulos/${slug}/`}
+  href={`${import.meta.env.BASE_URL}articulos/${slug}/`}
   class:list={[
     "lift group block rounded-2xl border border-stone-200 bg-white p-6 shadow-sm hover:shadow-lg dark:border-stone-800 dark:bg-stone-900",
     featured && "sm:col-span-2 sm:p-8",
