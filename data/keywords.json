@@ -1,5 +1,5 @@
 {
-  "_comment": "Cola de keywords transaccionales (buyer-intent) para Google España. El miner publica una por ejecución, en orden, y registra las usadas en data/state.json. 'categories' filtra qué subconjunto del catálogo se inyecta al prompt.",
+  "_comment": "Cola de keywords transaccionales (buyer-intent) para Google España. El miner publica una por ejecución, en orden, y registra las usadas en data/state.json. 'categories' filtra qué subconjunto del catálogo se inyecta al prompt. Orden: de menor a mayor competencia (long-tail informacional -> review de marca concreta -> comparativas de marca / B2B genéricas, que compiten contra grandes retailers).",
   "keywords": [
     {
       "keyword": "mejor silla ergonómica premium 2026",
@@ -14,16 +14,82 @@
       "newsQuery": "Herman Miller Aeron review"
     },
     {
-      "keyword": "mejor escritorio elevable eléctrico calidad precio 2026",
-      "intent": "comparativa de compra",
-      "categories": ["escritorio", "accesorio"],
-      "newsQuery": "escritorio elevable standing desk salud"
+      "keyword": "reposapiés ergonómico en teletrabajo: ¿es realmente necesario?",
+      "intent": "informacional / decisión de compra",
+      "categories": ["accesorio"],
+      "newsQuery": "reposapiés ergonómico teletrabajo salud postural"
     },
     {
-      "keyword": "Steelcase vs Herman Miller: comparativa definitiva",
-      "intent": "comparativa de marcas premium",
+      "keyword": "cómo ajustar la altura de la silla y el escritorio correctamente",
+      "intent": "guía informacional con intención de compra",
+      "categories": ["silla", "escritorio"],
+      "newsQuery": "ergonomía altura silla escritorio postura correcta"
+    },
+    {
+      "keyword": "diferencia entre silla ergonómica y silla gaming",
+      "intent": "informacional / comparativa de categoría",
       "categories": ["silla"],
-      "newsQuery": "Steelcase Herman Miller silla oficina"
+      "newsQuery": "silla ergonómica silla gaming diferencias"
+    },
+    {
+      "keyword": "silla ergonómica de malla o tapizada: cuál elegir",
+      "intent": "guía de compra específica",
+      "categories": ["silla"],
+      "newsQuery": "silla ergonómica malla tapizada oficina"
+    },
+    {
+      "keyword": "mejor ratón vertical para evitar la tendinitis de muñeca",
+      "intent": "problema-solución con alta intención",
+      "categories": ["accesorio"],
+      "newsQuery": "ratón vertical tendinitis muñeca ergonomía"
+    },
+    {
+      "keyword": "brazo para monitor con doble pantalla: guía de compra",
+      "intent": "guía de compra específica",
+      "categories": ["accesorio"],
+      "newsQuery": "brazo monitor doble pantalla ergonomía oficina"
+    },
+    {
+      "keyword": "mejor silla ergonómica por menos de 300 euros",
+      "intent": "comparativa de compra gama de entrada",
+      "categories": ["silla"],
+      "newsQuery": "silla ergonómica económica teletrabajo"
+    },
+    {
+      "keyword": "cuánto dura una silla ergonómica premium: guía de garantía",
+      "intent": "informacional / justificación de inversión",
+      "categories": ["silla"],
+      "newsQuery": "durabilidad garantía silla ergonómica premium"
+    },
+    {
+      "keyword": "silla ergonómica para embarazadas en teletrabajo",
+      "intent": "problema-solución de nicho",
+      "categories": ["silla"],
+      "newsQuery": "silla ergonómica embarazo teletrabajo salud"
+    },
+    {
+      "keyword": "escritorio elevable manual o eléctrico: cuál elegir",
+      "intent": "guía de compra comparativa",
+      "categories": ["escritorio"],
+      "newsQuery": "escritorio elevable manual eléctrico comparativa"
+    },
+    {
+      "keyword": "cómo prevenir el dolor de espalda trabajando desde casa",
+      "intent": "informacional / problema-solución",
+      "categories": ["silla", "accesorio"],
+      "newsQuery": "dolor espalda teletrabajo prevención ergonomía"
+    },
+    {
+      "keyword": "mejor silla ergonómica para personas altas",
+      "intent": "guía de compra de nicho",
+      "categories": ["silla"],
+      "newsQuery": "silla ergonómica personas altas tallas"
+    },
+    {
+      "keyword": "reposamuñecas: ¿es necesario con un teclado ergonómico?",
+      "intent": "informacional / decisión de compra",
+      "categories": ["teclado", "accesorio"],
+      "newsQuery": "reposamuñecas teclado ergonómico salud"
     },
     {
       "keyword": "mejor silla para programadores que pasan 10 horas sentados",
@@ -32,16 +98,64 @@
       "newsQuery": "programadores dolor espalda ergonomía desarrollo software"
     },
     {
+      "keyword": "HÅG Capisco 8106 opiniones: la silla de montar ergonómica",
+      "intent": "review de producto de nicho",
+      "categories": ["silla"],
+      "newsQuery": "HAG Capisco silla montar ergonomía review"
+    },
+    {
+      "keyword": "Secretlab Titan Evo opiniones: ¿vale la pena para oficina?",
+      "intent": "review de producto",
+      "categories": ["silla"],
+      "newsQuery": "Secretlab Titan Evo review oficina"
+    },
+    {
+      "keyword": "FlexiSpot E7 vs E8: comparativa de escritorios elevables",
+      "intent": "comparativa de producto",
+      "categories": ["escritorio"],
+      "newsQuery": "FlexiSpot E7 E8 comparativa escritorio elevable"
+    },
+    {
+      "keyword": "Kinesis Advantage360 opiniones: teclado ergonómico dividido",
+      "intent": "review de producto de nicho técnico",
+      "categories": ["teclado"],
+      "newsQuery": "Kinesis Advantage360 review teclado ergonómico"
+    },
+    {
+      "keyword": "Ergotron LX opiniones: brazo para monitor premium",
+      "intent": "review de producto",
+      "categories": ["accesorio"],
+      "newsQuery": "Ergotron LX brazo monitor review"
+    },
+    {
+      "keyword": "Logitech MX Vertical opiniones: ratón ergonómico premium",
+      "intent": "review de producto",
+      "categories": ["accesorio"],
+      "newsQuery": "Logitech MX Vertical review ratón ergonómico"
+    },
+    {
       "keyword": "mejor teclado ergonómico dividido para escribir sin dolor",
       "intent": "review de nicho técnico",
       "categories": ["teclado", "accesorio"],
       "newsQuery": "teclado ergonómico dividido túnel carpiano"
     },
     {
+      "keyword": "mejor escritorio elevable eléctrico calidad precio 2026",
+      "intent": "comparativa de compra",
+      "categories": ["escritorio", "accesorio"],
+      "newsQuery": "escritorio elevable standing desk salud"
+    },
+    {
       "keyword": "setup ergonómico completo para home office profesional",
       "intent": "guía de compra multi-producto",
       "categories": ["silla", "escritorio", "teclado", "accesorio"],
       "newsQuery": "setup home office ergonomía productividad"
+    },
+    {
+      "keyword": "Steelcase vs Herman Miller: comparativa definitiva",
+      "intent": "comparativa de marcas premium",
+      "categories": ["silla"],
+      "newsQuery": "Steelcase Herman Miller silla oficina"
     },
     {
       "keyword": "sillas ergonómicas para empresas: guía de compra B2B",
