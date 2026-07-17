@@ -32,7 +32,7 @@ products:
     cons:
       - Precio elevado
       - Diseño clásico
-    url: https://www.amazon.es/s?k=Herman%20Miller%20Aeron%20Remastered%20silla%20ergonomica&low-price=900&tag=tutag-21&linkCode=ll2
+    url: https://www.amazon.es/s?k=Herman%20Miller%20Aeron%20Remastered%20silla%20ergonomica&low-price=900&tag=ergonomiapro-21&linkCode=ll2
     ctaLabel: Ver precio en Amazon
   - id: hm-embody
     name: Herman Miller Embody
@@ -53,7 +53,7 @@ products:
     cons:
       - Precio más alto
       - Estética voluminosa
-    url: https://www.amazon.es/s?k=Herman%20Miller%20Embody%20silla%20ergonomica&low-price=1200&tag=tutag-21&linkCode=ll2
+    url: https://www.amazon.es/s?k=Herman%20Miller%20Embody%20silla%20ergonomica&low-price=1200&tag=ergonomiapro-21&linkCode=ll2
     ctaLabel: Ver precio en Amazon
   - id: steelcase-leap
     name: Steelcase Leap V2
@@ -74,7 +74,7 @@ products:
     cons:
       - Reposabrazos menos avanzados
       - Menos moderna en diseño
-    url: https://www.amazon.es/s?k=Steelcase%20Leap%20V2%20silla%20ergonomica&low-price=700&tag=tutag-21&linkCode=ll2
+    url: https://www.amazon.es/s?k=Steelcase%20Leap%20V2%20silla%20ergonomica&low-price=700&tag=ergonomiapro-21&linkCode=ll2
     ctaLabel: Ver precio en Amazon
   - id: steelcase-gesture
     name: Steelcase Gesture
@@ -95,7 +95,7 @@ products:
     cons:
       - Precio considerable
       - No tan transpirable como malla
-    url: https://www.amazon.es/s?k=Steelcase%20Gesture%20silla%20oficina&low-price=850&tag=tutag-21&linkCode=ll2
+    url: https://www.amazon.es/s?k=Steelcase%20Gesture%20silla%20oficina&low-price=850&tag=ergonomiapro-21&linkCode=ll2
     ctaLabel: Ver precio en Amazon
   - id: secretlab-titan
     name: Secretlab Titan Evo
@@ -116,7 +116,7 @@ products:
     cons:
       - Menos garantías
       - No necesariamente profesional
-    url: https://www.amazon.es/s?k=Secretlab%20Titan%20Evo%20silla&low-price=350&tag=tutag-21&linkCode=ll2
+    url: https://www.amazon.es/s?k=Secretlab%20Titan%20Evo%20silla&low-price=350&tag=ergonomiapro-21&linkCode=ll2
     ctaLabel: Ver precio en Amazon
 faq:
   - q: ¿Vale la pena el precio de la Herman Miller Aeron?

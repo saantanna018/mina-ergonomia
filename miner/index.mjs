@@ -30,6 +30,13 @@ async function main() {
   const started = Date.now();
   console.log(`[miner] Ciclo iniciado ${new Date().toISOString()}${DRY_RUN ? " (dry-run)" : ""}`);
 
+  if (!config.affiliateTag) {
+    throw new Error(
+      "AMAZON_ASSOCIATES_TAG no está definido (falta en .env o en el secret de GitHub Actions). " +
+        "Publicar sin él generaría enlaces de afiliado sin comisión; abortando el ciclo.",
+    );
+  }
+
   // 1. Keyword pendiente
   const { keywords } = JSON.parse(readFileSync(config.paths.keywords, "utf8"));
   const state = loadState();

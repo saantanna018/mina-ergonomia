@@ -10,7 +10,7 @@ dotenv.config({ path: path.join(ROOT, ".env") });
 export const config = {
   openaiApiKey: process.env.OPENAI_API_KEY || null,
   model: process.env.OPENAI_MODEL || "gpt-4o",
-  affiliateTag: process.env.AMAZON_ASSOCIATES_TAG || "tutag-21",
+  affiliateTag: process.env.AMAZON_ASSOCIATES_TAG || null,
   siteUrl: process.env.SITE_URL || "https://ergolab-pro.example",
   maxNewsItems: Number(process.env.MAX_NEWS_ITEMS || 6),
 
