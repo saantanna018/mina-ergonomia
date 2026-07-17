@@ -45,7 +45,8 @@ jobs:
         run: |
           git config user.name "ergolab-miner[bot]"
           git config user.email "miner@users.noreply.github.com"
-          git add web/src/content/articles data/state.json
+          git add web/src/content/articles
+          git add -f data/state.json
           git diff --cached --quiet || git commit -m "content: artículo diario automático"
           git push
 
