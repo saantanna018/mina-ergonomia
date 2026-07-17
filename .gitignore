@@ -5,3 +5,9 @@ web/.astro/
 .env
 data/state.json
 *.log
+
+# Artefactos locales de la herramienta de terceros claude-flow/ruflo (daemon
+# de análisis en segundo plano). No forman parte del proyecto ErgoLab.
+.claude-flow/
+.claude/proven-config.json
+.claude/.proven-config-version
