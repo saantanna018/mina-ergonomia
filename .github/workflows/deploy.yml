@@ -1,0 +1,50 @@
+# Reconstruye y despliega el sitio estático cada vez que se sube un cambio
+# a main, SIN ejecutar el miner (eso lo hace daily-miner.yml). Cubre el
+# caso de fixes de código/contenido que necesitan verse en la web ya,
+# sin esperar al cron diario ni consumir una keyword de la cola.
+#
+# Nota: los pushes que hace el propio daily-miner.yml usan GITHUB_TOKEN,
+# y GitHub no relanza workflows por pushes autenticados con GITHUB_TOKEN,
+# así que este workflow no se dispara a sí mismo en bucle con el otro.
+name: Deploy Site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm --prefix web ci --no-audit --no-fund
+
+      - name: Build static site
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: npm --prefix web run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
