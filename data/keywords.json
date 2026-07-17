@@ -1,0 +1,53 @@
+{
+  "_comment": "Cola de keywords transaccionales (buyer-intent) para Google España. El miner publica una por ejecución, en orden, y registra las usadas en data/state.json. 'categories' filtra qué subconjunto del catálogo se inyecta al prompt.",
+  "keywords": [
+    {
+      "keyword": "mejor silla ergonómica premium 2026",
+      "intent": "comparativa de compra",
+      "categories": ["silla"],
+      "newsQuery": "silla ergonómica teletrabajo salud postural"
+    },
+    {
+      "keyword": "Herman Miller Aeron opiniones: ¿merece la pena en 2026?",
+      "intent": "review de producto high-ticket",
+      "categories": ["silla"],
+      "newsQuery": "Herman Miller Aeron review"
+    },
+    {
+      "keyword": "mejor escritorio elevable eléctrico calidad precio 2026",
+      "intent": "comparativa de compra",
+      "categories": ["escritorio", "accesorio"],
+      "newsQuery": "escritorio elevable standing desk salud"
+    },
+    {
+      "keyword": "Steelcase vs Herman Miller: comparativa definitiva",
+      "intent": "comparativa de marcas premium",
+      "categories": ["silla"],
+      "newsQuery": "Steelcase Herman Miller silla oficina"
+    },
+    {
+      "keyword": "mejor silla para programadores que pasan 10 horas sentados",
+      "intent": "problema-solución con alta intención",
+      "categories": ["silla", "accesorio"],
+      "newsQuery": "programadores dolor espalda ergonomía desarrollo software"
+    },
+    {
+      "keyword": "mejor teclado ergonómico dividido para escribir sin dolor",
+      "intent": "review de nicho técnico",
+      "categories": ["teclado", "accesorio"],
+      "newsQuery": "teclado ergonómico dividido túnel carpiano"
+    },
+    {
+      "keyword": "setup ergonómico completo para home office profesional",
+      "intent": "guía de compra multi-producto",
+      "categories": ["silla", "escritorio", "teclado", "accesorio"],
+      "newsQuery": "setup home office ergonomía productividad"
+    },
+    {
+      "keyword": "sillas ergonómicas para empresas: guía de compra B2B",
+      "intent": "B2B / compra por volumen",
+      "categories": ["silla"],
+      "newsQuery": "empresas bienestar laboral ergonomía oficina"
+    }
+  ]
+}

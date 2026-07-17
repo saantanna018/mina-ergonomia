@@ -1,0 +1,62 @@
+---
+interface Product {
+  id: string;
+  name: string;
+  brand: string;
+  price: number;
+  badge: string;
+  rating: string;
+  url: string;
+}
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+---
+
+<div class="overflow-x-auto rounded-2xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-900">
+  <table class="w-full min-w-[540px] text-left text-sm">
+    <thead>
+      <tr class="border-b border-stone-200 bg-stone-50/80 text-[11px] tracking-widest text-stone-400 uppercase dark:border-stone-800 dark:bg-stone-900/60 dark:text-stone-500">
+        <th class="px-5 py-3.5 font-semibold">#</th>
+        <th class="px-5 py-3.5 font-semibold">Producto</th>
+        <th class="px-5 py-3.5 font-semibold">Posición</th>
+        <th class="px-5 py-3.5 font-semibold">Precio aprox.</th>
+        <th class="px-5 py-3.5 font-semibold">Nota</th>
+        <th class="px-5 py-3.5 font-semibold"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {products.map((p, i) => (
+        <tr class="border-b border-stone-100 transition-colors last:border-0 hover:bg-accent-50/40 dark:border-stone-800/70 dark:hover:bg-accent-900/10">
+          <td class="px-5 py-4 font-black text-stone-400">{i + 1}</td>
+          <td class="px-5 py-4">
+            <a href={`#producto-${p.id}`} class="font-semibold text-stone-900 hover:text-accent-600 dark:text-stone-100 dark:hover:text-accent-400">
+              {p.name}
+            </a>
+            <div class="text-xs text-stone-400 dark:text-stone-500">{p.brand}</div>
+          </td>
+          <td class="px-5 py-4">
+            <span class="rounded-full bg-stone-100 px-2.5 py-1 text-[11px] font-semibold text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+              {p.badge}
+            </span>
+          </td>
+          <td class="px-5 py-4 font-semibold whitespace-nowrap">~{p.price.toLocaleString("es-ES")} €</td>
+          <td class="px-5 py-4 font-black text-accent-600 dark:text-accent-400">{p.rating}</td>
+          <td class="px-5 py-4">
+            <a
+              href={p.url}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+              class="inline-block rounded-xl bg-stone-900 px-4 py-2 text-xs font-bold whitespace-nowrap text-white transition-all duration-200 hover:bg-accent-600 active:scale-95 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-accent-400"
+            >
+              Ver precio
+            </a>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

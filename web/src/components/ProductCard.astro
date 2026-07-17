@@ -1,0 +1,91 @@
+---
+interface Product {
+  id: string;
+  name: string;
+  brand: string;
+  price: number;
+  badge: string;
+  rating: string;
+  specs: Record<string, string>;
+  pros: string[];
+  cons: string[];
+  url: string;
+  ctaLabel: string;
+}
+
+interface Props {
+  product: Product;
+  position: number;
+}
+
+const { product, position } = Astro.props;
+const priceStr = product.price.toLocaleString("es-ES");
+---
+
+<article
+  id={`producto-${product.id}`}
+  class="lift overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm hover:shadow-xl dark:border-stone-800 dark:bg-stone-900"
+>
+  <div class="flex items-center justify-between gap-3 border-b border-stone-100 bg-stone-50/60 px-6 py-4 dark:border-stone-800 dark:bg-stone-900/60">
+    <div class="flex items-center gap-3">
+      <span class="grid size-8 shrink-0 place-items-center rounded-xl bg-stone-900 text-sm font-black text-white dark:bg-stone-100 dark:text-stone-900">
+        {position}
+      </span>
+      <div>
+        <span class="rounded-full bg-gradient-to-r from-accent-500 to-accent-700 px-2.5 py-0.5 text-[11px] font-bold tracking-wide text-white uppercase">
+          {product.badge}
+        </span>
+      </div>
+    </div>
+    <div class="text-right">
+      <div class="text-xl font-black tracking-tight text-stone-900 dark:text-stone-100">
+        {product.rating}<span class="text-sm font-semibold text-stone-400">/10</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase dark:text-stone-500">{product.brand}</p>
+    <h3 class="mt-1 text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100">{product.name}</h3>
+    <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">Precio orientativo: <strong class="text-stone-700 dark:text-stone-300">~{priceStr} €</strong></p>
+
+    <dl class="mt-5 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+      {Object.entries(product.specs).map(([key, value]) => (
+        <div class="flex flex-col rounded-xl bg-stone-50 px-3.5 py-2.5 dark:bg-stone-800/50">
+          <dt class="text-[11px] font-semibold tracking-wide text-stone-400 uppercase dark:text-stone-500">{key}</dt>
+          <dd class="mt-0.5 font-medium text-stone-700 dark:text-stone-300">{value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl border border-accent-200/70 bg-accent-50/60 p-4 dark:border-accent-800/40 dark:bg-accent-900/15">
+        <p class="text-xs font-bold tracking-wide text-accent-700 uppercase dark:text-accent-300">A favor</p>
+        <ul class="mt-2 space-y-1.5 text-sm text-stone-700 dark:text-stone-300">
+          {product.pros.map((pro) => (
+            <li class="flex gap-2"><span class="text-accent-600 dark:text-accent-400">✓</span><span>{pro}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-stone-200 bg-stone-50/80 p-4 dark:border-stone-700/60 dark:bg-stone-800/40">
+        <p class="text-xs font-bold tracking-wide text-stone-500 uppercase dark:text-stone-400">A tener en cuenta</p>
+        <ul class="mt-2 space-y-1.5 text-sm text-stone-600 dark:text-stone-400">
+          {product.cons.map((con) => (
+            <li class="flex gap-2"><span class="text-stone-400">✕</span><span>{con}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <a
+      href={product.url}
+      target="_blank"
+      rel="sponsored nofollow noopener"
+      class="group mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-accent-600 to-accent-800 px-6 py-3.5 text-base font-bold text-white shadow-md shadow-accent-600/20 transition-all duration-200 hover:from-accent-500 hover:to-accent-700 hover:shadow-lg hover:shadow-accent-600/30 active:scale-[0.98]"
+    >
+      {product.ctaLabel}
+      <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+    </a>
+    <p class="mt-2 text-center text-[11px] text-stone-400 dark:text-stone-500">Enlace de afiliado · sin coste extra para ti</p>
+  </div>
+</article>

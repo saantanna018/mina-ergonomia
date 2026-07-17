@@ -1,0 +1,63 @@
+# Ciclo desatendido en producción: cada día genera y publica un artículo
+# nuevo, reconstruye el sitio estático y lo despliega en GitHub Pages.
+# Requiere los secrets: OPENAI_API_KEY, AMAZON_ASSOCIATES_TAG
+# y la variable: SITE_URL (Settings → Secrets and variables → Actions).
+name: Daily Content Miner
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC diario (~08:00 en España peninsular)
+  workflow_dispatch: {} # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-miner
+  cancel-in-progress: false
+
+jobs:
+  mine-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          npm --prefix web ci --no-audit --no-fund
+
+      - name: Run content miner
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AMAZON_ASSOCIATES_TAG: ${{ secrets.AMAZON_ASSOCIATES_TAG }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: node miner/index.mjs
+
+      - name: Commit new article
+        run: |
+          git config user.name "ergolab-miner[bot]"
+          git config user.email "miner@users.noreply.github.com"
+          git add web/src/content/articles data/state.json
+          git diff --cached --quiet || git commit -m "content: artículo diario automático"
+          git push
+
+      - name: Build static site
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: npm --prefix web run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

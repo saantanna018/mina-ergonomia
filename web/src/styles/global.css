@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Dark mode por clase (.dark en <html>), controlado por ThemeToggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Acento de marca: verde profundo → teal (premium, nada de gradientes genéricos) */
+  --color-accent-50: oklch(0.98 0.02 175);
+  --color-accent-100: oklch(0.95 0.05 174);
+  --color-accent-200: oklch(0.9 0.09 173);
+  --color-accent-300: oklch(0.84 0.13 172);
+  --color-accent-400: oklch(0.76 0.15 171);
+  --color-accent-500: oklch(0.69 0.14 170);
+  --color-accent-600: oklch(0.59 0.12 169);
+  --color-accent-700: oklch(0.5 0.1 168);
+  --color-accent-800: oklch(0.42 0.08 167);
+  --color-accent-900: oklch(0.36 0.06 166);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Micro-interacción global de tarjetas y CTAs */
+.lift {
+  transition:
+    transform 200ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.lift:hover {
+  transform: translateY(-3px);
+}

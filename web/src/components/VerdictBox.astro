@@ -1,0 +1,25 @@
+---
+interface Props {
+  productName: string;
+  summary: string;
+  url: string;
+  ctaLabel: string;
+}
+
+const { productName, summary, url, ctaLabel } = Astro.props;
+---
+
+<aside class="overflow-hidden rounded-2xl bg-gradient-to-br from-accent-700 via-accent-800 to-stone-900 p-8 text-white shadow-xl shadow-accent-900/20">
+  <p class="text-xs font-bold tracking-[0.2em] text-accent-200 uppercase">Veredicto del editor</p>
+  <h3 class="mt-2 text-2xl font-black tracking-tight">{productName}</h3>
+  <p class="mt-3 max-w-2xl text-sm leading-relaxed text-accent-50/90">{summary}</p>
+  <a
+    href={url}
+    target="_blank"
+    rel="sponsored nofollow noopener"
+    class="group mt-6 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-sm font-bold text-accent-800 shadow-lg transition-all duration-200 hover:bg-accent-50 active:scale-[0.98]"
+  >
+    {ctaLabel}
+    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+  </a>
+</aside>

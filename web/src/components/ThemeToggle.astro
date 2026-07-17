@@ -1,0 +1,20 @@
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Cambiar tema claro/oscuro"
+  class="grid size-9 place-items-center rounded-xl text-stone-600 transition-all duration-200 hover:bg-stone-200/60 hover:text-stone-900 active:scale-90 dark:text-stone-400 dark:hover:bg-stone-800/60 dark:hover:text-stone-100"
+>
+  <svg class="size-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 15.5A9.72 9.72 0 0 1 18 16.25 9.75 9.75 0 0 1 8.25 6.5c0-1.33.27-2.6.75-3.75a9.75 9.75 0 1 0 12.75 12.75Z" />
+  </svg>
+  <svg class="hidden size-5 dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.36.64-1.59 1.59M21 12h-2.25m-.64 6.36-1.59-1.59M12 18.75V21m-4.77-4.23-1.59 1.59M5.25 12H3m4.23-4.77-1.59-1.59M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+  </svg>
+</button>
+
+<script>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const dark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  });
+</script>

@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+const articles = (await getCollection("articles")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+  title="ErgoLab — Ergonomía premium para profesionales | Análisis y comparativas"
+  description="Análisis honestos de sillas ergonómicas, escritorios elevables y periféricos premium para profesionales exigentes. Comparativas actualizadas para el mercado español."
+>
+  <main class="mx-auto max-w-6xl px-5 sm:px-8">
+    <section class="py-16 sm:py-24">
+      <p class="text-sm font-bold tracking-[0.2em] text-accent-600 uppercase dark:text-accent-400">
+        Ergonomía premium · España
+      </p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-black tracking-tight text-stone-900 sm:text-5xl dark:text-stone-50">
+        Equipa tu puesto de trabajo como un
+        <span class="bg-gradient-to-r from-accent-500 to-accent-700 bg-clip-text text-transparent">profesional</span>.
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-stone-500 dark:text-stone-400">
+        Analizamos sillas ergonómicas, escritorios elevables y periféricos de gama alta con criterio
+        técnico y honestidad radical. Sin humo: solo lo que de verdad merece tu inversión.
+      </p>
+    </section>
+
+    <section aria-label="Últimos análisis" class="pb-8">
+      {articles.length === 0 ? (
+        <div class="rounded-2xl border border-dashed border-stone-300 p-12 text-center text-stone-400 dark:border-stone-700">
+          <p class="font-semibold">Aún no hay artículos publicados.</p>
+          <p class="mt-1 text-sm">Ejecuta <code class="rounded bg-stone-100 px-1.5 py-0.5 text-xs dark:bg-stone-800">npm run mine</code> para generar el primero.</p>
+        </div>
+      ) : (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {articles.map((article, i) => (
+            <ArticleCard
+              slug={article.id}
+              title={article.data.title}
+              excerpt={article.data.excerpt}
+              pubDate={article.data.pubDate}
+              tags={article.data.tags}
+              featured={i === 0}
+            />
+          ))}
+        </div>
+      )}
+    </section>
+  </main>
+</BaseLayout>

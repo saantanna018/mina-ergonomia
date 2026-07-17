@@ -1,0 +1,184 @@
+{
+  "_comment": "Catálogo curado del nicho. El LLM NUNCA inventa datos de producto: precio, specs y URL salen de aquí. 'asin' es opcional; si es null se genera un enlace de búsqueda afiliado estricto (marca + modelo exacto). 'minPriceEur' añade un suelo de precio a la búsqueda (param low-price) para que Amazon excluya clones y genéricos baratos y muestre solo el producto auténtico high-ticket. Precios orientativos en EUR.",
+  "products": [
+    {
+      "id": "hm-aeron",
+      "name": "Herman Miller Aeron Remastered",
+      "brand": "Herman Miller",
+      "category": "silla",
+      "price_eur": 1395,
+      "asin": null,
+      "searchQuery": "Herman Miller Aeron Remastered silla ergonomica",
+      "minPriceEur": 900,
+      "specs": {
+        "Material": "Malla 8Z Pellicle",
+        "Soporte lumbar": "PostureFit SL ajustable",
+        "Garantía": "12 años",
+        "Peso máximo": "159 kg",
+        "Tallas": "A / B / C"
+      }
+    },
+    {
+      "id": "hm-embody",
+      "name": "Herman Miller Embody",
+      "brand": "Herman Miller",
+      "category": "silla",
+      "price_eur": 1795,
+      "asin": null,
+      "searchQuery": "Herman Miller Embody silla ergonomica",
+      "minPriceEur": 1200,
+      "specs": {
+        "Respaldo": "Pixelated support (matriz dinámica)",
+        "Diseñada con": "Médicos y fisioterapeutas",
+        "Garantía": "12 años",
+        "Uso": "Sesiones largas / gaming pro"
+      }
+    },
+    {
+      "id": "steelcase-gesture",
+      "name": "Steelcase Gesture",
+      "brand": "Steelcase",
+      "category": "silla",
+      "price_eur": 1290,
+      "asin": null,
+      "searchQuery": "Steelcase Gesture silla oficina",
+      "minPriceEur": 850,
+      "specs": {
+        "Reposabrazos": "360° (patente LiveBack)",
+        "Diseñada para": "Múltiples dispositivos y posturas",
+        "Garantía": "12 años",
+        "Ajustes": "Asiento, lumbar, tensión, altura"
+      }
+    },
+    {
+      "id": "steelcase-leap",
+      "name": "Steelcase Leap V2",
+      "brand": "Steelcase",
+      "category": "silla",
+      "price_eur": 1090,
+      "asin": null,
+      "searchQuery": "Steelcase Leap V2 silla ergonomica",
+      "minPriceEur": 700,
+      "specs": {
+        "Tecnología": "LiveBack (respaldo adaptativo)",
+        "Ajuste lumbar": "Independiente",
+        "Garantía": "12 años",
+        "Certificación": "Cradle to Cradle"
+      }
+    },
+    {
+      "id": "secretlab-titan",
+      "name": "Secretlab Titan Evo",
+      "brand": "Secretlab",
+      "category": "silla",
+      "price_eur": 549,
+      "asin": null,
+      "searchQuery": "Secretlab Titan Evo silla",
+      "minPriceEur": 350,
+      "specs": {
+        "Soporte lumbar": "L-ADAPT 4 vías integrado",
+        "Material": "Cuero NEO Hybrid / tela SoftWeave",
+        "Reposabrazos": "4D CloudSwap magnéticos",
+        "Garantía": "5 años"
+      }
+    },
+    {
+      "id": "hag-capisco",
+      "name": "HÅG Capisco 8106",
+      "brand": "Flokk / HÅG",
+      "category": "silla",
+      "price_eur": 815,
+      "asin": null,
+      "searchQuery": "HAG Capisco 8106 silla ergonomica",
+      "minPriceEur": 500,
+      "specs": {
+        "Diseño": "Asiento de montar (sit-stand)",
+        "Ideal con": "Escritorios elevables",
+        "Altura máxima": "Hasta 81 cm de asiento",
+        "Fabricación": "Materiales reciclados, made in Norway"
+      }
+    },
+    {
+      "id": "flexispot-e7",
+      "name": "FlexiSpot E7 Pro",
+      "brand": "FlexiSpot",
+      "category": "escritorio",
+      "price_eur": 499,
+      "asin": null,
+      "searchQuery": "FlexiSpot E7 Pro escritorio elevable electrico",
+      "minPriceEur": 300,
+      "specs": {
+        "Motores": "Doble motor",
+        "Carga máxima": "160 kg",
+        "Rango de altura": "60,5 – 125,5 cm",
+        "Memoria": "4 posiciones + antibloqueo",
+        "Garantía": "15 años (estructura)"
+      }
+    },
+    {
+      "id": "flexispot-e8",
+      "name": "FlexiSpot E8",
+      "brand": "FlexiSpot",
+      "category": "escritorio",
+      "price_eur": 599,
+      "asin": null,
+      "searchQuery": "FlexiSpot E8 escritorio elevable electrico",
+      "minPriceEur": 380,
+      "specs": {
+        "Motores": "Doble motor silencioso (<50 dB)",
+        "Carga máxima": "125 kg",
+        "Rango de altura": "60 – 125 cm",
+        "Pata": "Columna ovalada premium",
+        "Extras": "Puerto USB de carga en el panel"
+      }
+    },
+    {
+      "id": "kinesis-advantage360",
+      "name": "Kinesis Advantage360 Pro",
+      "brand": "Kinesis",
+      "category": "teclado",
+      "price_eur": 489,
+      "asin": null,
+      "searchQuery": "Kinesis Advantage360 teclado ergonomico dividido",
+      "minPriceEur": 300,
+      "specs": {
+        "Formato": "Split contorneado (dos mitades)",
+        "Conexión": "Bluetooth multi-dispositivo / USB-C",
+        "Firmware": "ZMK open-source, remapeable",
+        "Switches": "Gateron Brown mecánicos"
+      }
+    },
+    {
+      "id": "logitech-mx-vertical",
+      "name": "Logitech MX Vertical",
+      "brand": "Logitech",
+      "category": "accesorio",
+      "price_eur": 109,
+      "asin": null,
+      "searchQuery": "Logitech MX Vertical raton ergonomico inalambrico",
+      "minPriceEur": 70,
+      "specs": {
+        "Ángulo": "57° (posición de apretón de manos)",
+        "Reducción muscular": "-10% tensión vs ratón estándar",
+        "Batería": "4 meses / carga rápida USB-C",
+        "Sensor": "4.000 DPI"
+      }
+    },
+    {
+      "id": "ergotron-lx",
+      "name": "Ergotron LX Brazo Monitor",
+      "brand": "Ergotron",
+      "category": "accesorio",
+      "price_eur": 165,
+      "asin": null,
+      "searchQuery": "Ergotron LX brazo monitor escritorio",
+      "minPriceEur": 100,
+      "specs": {
+        "Carga": "3,2 – 11,3 kg",
+        "Elevación": "33 cm de rango vertical",
+        "Rotación": "360° + retrato/paisaje",
+        "Garantía": "10 años"
+      }
+    }
+  ]
+}

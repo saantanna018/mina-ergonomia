@@ -1,0 +1,122 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import FAQ from "../../components/FAQ.astro";
+import VerdictBox from "../../components/VerdictBox.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const { data } = article;
+
+const winner = data.products.find((p) => p.id === data.verdict.productId) ?? data.products[0];
+const dateStr = data.pubDate.toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+
+// SEO estructurado: Article + FAQPage + ItemList (rich results en Google)
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: data.title,
+    description: data.description,
+    datePublished: data.pubDate.toISOString(),
+    inLanguage: "es-ES",
+    author: { "@type": "Organization", name: "ErgoLab" },
+  },
+  data.faq.length > 0 && {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: data.products.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${p.brand} ${p.name}`,
+    })),
+  },
+].filter(Boolean);
+---
+
+<BaseLayout title={`${data.title} | ErgoLab`} description={data.description} ogType="article">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <main class="mx-auto max-w-3xl px-5 sm:px-8">
+    <article>
+      <header class="py-12 sm:py-16">
+        <div class="flex flex-wrap items-center gap-2">
+          {data.tags.map((tag) => (
+            <span class="rounded-full bg-accent-100 px-2.5 py-0.5 text-[11px] font-semibold text-accent-700 dark:bg-accent-900/30 dark:text-accent-300">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h1 class="mt-4 text-3xl font-black tracking-tight text-stone-900 sm:text-4xl sm:leading-tight dark:text-stone-50">
+          {data.title}
+        </h1>
+        <div class="mt-4 flex items-center gap-3 text-sm text-stone-400 dark:text-stone-500">
+          <time datetime={data.pubDate.toISOString()}>Actualizado el {dateStr}</time>
+          <span aria-hidden="true">·</span>
+          <span>{data.products.length} productos analizados</span>
+        </div>
+        <p class="mt-6 rounded-2xl border border-stone-200 bg-stone-100/60 px-4 py-3 text-xs leading-relaxed text-stone-500 dark:border-stone-800 dark:bg-stone-900/60 dark:text-stone-400">
+          Transparencia: este artículo contiene enlaces de afiliado. Si compras a través de ellos,
+          recibimos una comisión sin coste adicional para ti. Nuestro criterio editorial no está en venta.
+        </p>
+      </header>
+
+      <section aria-label="Comparativa rápida" class="mb-12">
+        <h2 class="mb-4 text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100">Comparativa rápida</h2>
+        <ComparisonTable products={data.products} />
+      </section>
+
+      <div
+        class="prose prose-stone dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-a:text-accent-600 dark:prose-a:text-accent-400 max-w-none prose-p:leading-relaxed"
+      >
+        <Content />
+      </div>
+
+      <section aria-label="Productos recomendados" class="mt-14 space-y-8">
+        <h2 class="text-2xl font-black tracking-tight text-stone-900 dark:text-stone-100">
+          Nuestra selección, en detalle
+        </h2>
+        {data.products.map((product, i) => (
+          <ProductCard product={product} position={i + 1} />
+        ))}
+      </section>
+
+      <section class="mt-14">
+        <VerdictBox
+          productName={`${winner.brand} ${winner.name}`}
+          summary={data.verdict.summary}
+          url={winner.url}
+          ctaLabel={winner.ctaLabel}
+        />
+      </section>
+
+      {data.faq.length > 0 && (
+        <section aria-label="Preguntas frecuentes" class="mt-14">
+          <h2 class="mb-4 text-2xl font-black tracking-tight text-stone-900 dark:text-stone-100">
+            Preguntas frecuentes
+          </h2>
+          <FAQ items={data.faq} />
+        </section>
+      )}
+    </article>
+  </main>
+</BaseLayout>
